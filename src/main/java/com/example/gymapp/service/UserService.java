@@ -12,8 +12,15 @@ public class UserService {
         repository.save(user);
     }
 
+    public void update(Long id, User user){
 
-    public void delete(User user) {
-        repository.delete(user);
+    }
+    public User getUser(String email, String password) {
+        return repository.findByEmailAndPassword(email, password);
+    }
+
+    public void deleteUser(Long id) {
+
+        repository.deleteById(id);
     }
 }
