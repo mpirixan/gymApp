@@ -1,9 +1,12 @@
 package com.example.gymapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "USER")
@@ -24,4 +27,8 @@ public class User extends BaseModel{
     private String email;
     @Column(name = "phone")
     private String phone;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+    @JsonIgnore
+    private List<Treino> treinos;
 }

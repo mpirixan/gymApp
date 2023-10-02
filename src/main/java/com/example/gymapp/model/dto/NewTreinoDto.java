@@ -9,6 +9,8 @@ public class NewTreinoDto{
     private String nome;
     private Integer serie;
     private Integer carga;
-    private TipoTreinoEnum treinoEnum;
-    private Long idUser;
+    private TipoTreinoEnum tipoTreino;
+    private String emailUser;
+
+    private String password;
 }

@@ -20,10 +20,9 @@ public class UserController {
         service.save(user);
     }
 
-    @PutMapping("userEdit/{id}")
-    public void editUser(@PathVariable Long id,
-                         @RequestBody  User user) {
-        service.update(id,user);
+    @PutMapping("userEdit")
+    public void editUser(@RequestBody  User user) {
+        service.update(user);
     }
 
     @GetMapping("/{email}/{password}")

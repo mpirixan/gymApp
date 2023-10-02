@@ -1,6 +1,7 @@
 package com.example.gymapp.model;
 
 import com.example.gymapp.enums.TipoTreinoEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,7 @@ public class Treino extends BaseModel{
     private TipoTreinoEnum tipoTreino;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user",referencedColumnName = "id")
+    @JsonIgnore
     private User user;
 
 }

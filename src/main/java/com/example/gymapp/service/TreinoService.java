@@ -1,6 +1,7 @@
 package com.example.gymapp.service;
 
 import com.example.gymapp.model.Treino;
+import com.example.gymapp.model.User;
 import com.example.gymapp.model.dto.NewTreinoDto;
 import com.example.gymapp.repository.TreinoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,9 @@ public class TreinoService {
         Treino treino = new Treino();
         treino.setNome(treinoDto.getNome());
         treino.setSerie(treinoDto.getSerie());
-        treino.setTipoTreino(treinoDto.getTreinoEnum());
+        treino.setTipoTreino(treinoDto.getTipoTreino());
         treino.setCarga(treinoDto.getCarga());
-        treino.setUser(userService.getUser(treinoDto.getIdUser()));
+        treino.setUser(userService.getUser(treinoDto.getEmailUser(), treinoDto.getPassword()));
 
         repository.save(treino);
     }
@@ -31,4 +32,9 @@ public class TreinoService {
     public List<Treino> listar(){
         return repository.findAll();
     }
+
+    public List<Treino> listByUser(User user){
+        return repository.findAllByUser(user);
+    }
+
 }
