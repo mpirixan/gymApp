@@ -1,0 +1,5 @@
+### Instalar
+´´´
+docker-compose up
+´´´
+

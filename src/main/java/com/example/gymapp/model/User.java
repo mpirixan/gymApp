@@ -6,16 +6,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table(name = "USER")
 @NoArgsConstructor
 @Getter
 @Setter
-public class User {
+public class User extends BaseModel{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+    @Column(name = "username")
     private String username;
+    @Column(name = "password")
     private String password;
-    @Column(unique = true)
+
+    @Column(name = "email", unique = true)
     private String email;
+    @Column(name = "phone")
     private String phone;
 }
