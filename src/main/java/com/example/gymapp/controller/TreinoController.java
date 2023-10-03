@@ -9,6 +9,7 @@ import com.example.gymapp.service.TreinoService;
 import com.example.gymapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,11 +35,12 @@ public class TreinoController {
     }
 
     @GetMapping("/list/credentials")
-    public List<Treino> listarByEmailAndPassword(@RequestParam String email,@RequestParam String password){
+    public ResponseEntity<List<Treino>> listarByEmailAndPassword(@RequestParam String email, @RequestParam String password){
         User user = userService.getUser(email,password);
          if(user == null){
             throw new ServiceException("User not found", HttpStatus.NOT_FOUND);
          }
-        return service.listByUser(user);
+         List<Treino> list = service.listByUser(user);
+        return ResponseEntity.ok(list);
     }
 }

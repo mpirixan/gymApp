@@ -17,8 +17,9 @@ public class UserController {
 
 
     @PostMapping()
-    public void newUser(@RequestBody User user) {
+    public ResponseEntity newUser(@RequestBody User user) {
         service.save(user);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping("userEdit")
