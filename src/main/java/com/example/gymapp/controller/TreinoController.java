@@ -34,8 +34,8 @@ public class TreinoController {
     }
 
     @GetMapping("/list/credentials")
-    public List<Treino> listarByEmailAndPassword(@RequestBody RequestCredentialsDto treinoDto){
-        User user = userService.getUser(treinoDto.getEmail(), treinoDto.getPassword());
+    public List<Treino> listarByEmailAndPassword(@RequestParam String email,@RequestParam String password){
+        User user = userService.getUser(email,password);
          if(user == null){
             throw new ServiceException("User not found", HttpStatus.NOT_FOUND);
          }
