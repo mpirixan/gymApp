@@ -22,5 +22,5 @@ spring:
     # Configurações de log
     show-sql: true
   security:
-    disable: true
+    basic.enable: false
   springdoc.swagger-ui.path: /swagger-ui.html

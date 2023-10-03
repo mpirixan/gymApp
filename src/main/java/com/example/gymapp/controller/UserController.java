@@ -1,6 +1,7 @@
 package com.example.gymapp.controller;
 
 import com.example.gymapp.model.User;
+import com.example.gymapp.model.dto.RequestCredentialsDto;
 import com.example.gymapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,8 +38,8 @@ public class UserController {
         public List<User> getUsers() {
             return service.getUsers();
         }
-    @DeleteMapping("{id}")
-    public void deleteUser(@PathVariable("id") Long id) {
-        service.deleteUser(id);
+    @DeleteMapping()
+    public void deleteUser(@RequestBody RequestCredentialsDto credentialsDto) {
+        service.deleteUser(credentialsDto);
     }
 }
